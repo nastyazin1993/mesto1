@@ -1,0 +1,6 @@
+.element__img {
+    width: 100%;
+    padding-bottom: -100%;
+    object-fit: cover;
+    
+}

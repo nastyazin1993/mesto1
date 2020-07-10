@@ -1,0 +1,7 @@
+@import url(./_name/form_name.css);
+@import url(./_profession/form_profession.css);
+.form{
+    margin: 0;
+    padding-top: 54px;
+    
+}
