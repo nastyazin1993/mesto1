@@ -7,13 +7,16 @@
     line-height: 22px;
     color: #FFFFFF;
     padding-top: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 @media screen and (max-width:550px){
     .profile__subtitle {
         text-align: center;
         margin: auto;
-        padding-top: 14px;
+        padding-top: 0;
     }
 }
 @media screen and (max-width:400px){

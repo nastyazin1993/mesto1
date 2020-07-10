@@ -4,13 +4,9 @@
 @import url(../blocks/page/page.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/profile/profile.css);
-@import url(../blocks/button-add/button-add.css);
-@import url(../blocks/button-edit/button-edit.css);
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/form/form.css);
-@import url(../blocks/button-popup/buton-popup.css);
-@import url(../blocks/button-close/button-close.css);
 @import url(../blocks/popup/_open/popup_open.css);

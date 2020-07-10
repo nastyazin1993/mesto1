@@ -4,110 +4,88 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Место</title>
-        <link rel="stylesheet" href="./pages/index.css">
+        <link rel="stylesheet" href="./pages/index.css" />
     </head>
     <body class="root">
         <div class="page">
             <header class="header">
-                <div class="header__logo">
-
-                </div>
-                
+                <div class="header__logo"></div>
             </header>
 
             <main class="content">
                 <section class="profile">
                     <div class="profile__block">
-                        <img class="profile__avatar" src="./images/avatar.jpg" alt="аватар">
+                        <img class="profile__avatar" src="./images/avatar.jpg" alt="аватар" />
                         <div class="profile__info">
-                             <div class="profile__container-info">
-                                 <h1 class="profile__title">Жак-Ив Кусто</h1>
-                                 <button type="submit" class="button-edit"></button>  
-                             </div>
-                               <p class="profile__subtitle">Исследователь океана</p>
+                            <div class="profile__container-info">
+                                <h1 class="profile__title">Жак-Ив Кусто</h1>
+                                <button type="button" class="profile__edit-button"></button>
                             </div>
+                            <p class="profile__subtitle">Исследователь океана</p>
+                        </div>
                     </div>
-                    <button type="submit" class="button-add"></button>
+                    <button type="button" class="profile__add-button"></button>
                 </section>
                 <section class="elements">
                     <div class="element">
-                        <img class="element__img" src="./images/karachaevsk.jpg" alt="Карачаевск">
+                        <img class="element__img" src="./images/karachaevsk.jpg" alt="Карачаевск" />
                         <div class="element__info">
                             <h2 class="element__title">Карачаевск</h2>
-                        <svg class="element__heart" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19.154 9.33822C21.294 7.19833 21.294 3.72364 19.154 1.60492C17.014 -0.534975 13.5392 -0.534975 11.3992 1.60492L10.361 2.66428L9.32276 1.62611C7.18277 -0.534975 3.70792 -0.534975 1.58911 1.60492C0.550891 2.64309 0 4.02026 0 5.48217C0 6.94408 0.572079 8.32124 1.58911 9.35941L10.361 18.1309L19.154 9.33822ZM1.35604 5.48217C1.35604 4.38044 1.7798 3.36346 2.56376 2.60072C3.36891 1.79561 4.40712 1.39305 5.44534 1.39305C6.48356 1.39305 7.52178 1.79561 8.32692 2.60072L10.361 4.6135L12.395 2.57953C13.9841 0.990498 16.5903 0.990498 18.1582 2.57953C18.921 3.34227 19.3659 4.35925 19.3659 5.46098C19.3659 6.56271 18.9422 7.57969 18.1582 8.34243L10.361 16.1605L2.56376 8.36362C1.80099 7.57969 1.35604 6.56271 1.35604 5.48217Z" fill="black"/>
-                        </svg>
-                        </div>
-                      
-                    </div>
-                    <div class="element">
-                        <img class="element__img" src="./images/elbrus.jpg" alt="Эльбрус">
-                        <div class="element__info"><h2 class="element__title">Гора Эльбрус</h2>
-                        <svg class="element__heart" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19.154 9.33822C21.294 7.19833 21.294 3.72364 19.154 1.60492C17.014 -0.534975 13.5392 -0.534975 11.3992 1.60492L10.361 2.66428L9.32276 1.62611C7.18277 -0.534975 3.70792 -0.534975 1.58911 1.60492C0.550891 2.64309 0 4.02026 0 5.48217C0 6.94408 0.572079 8.32124 1.58911 9.35941L10.361 18.1309L19.154 9.33822ZM1.35604 5.48217C1.35604 4.38044 1.7798 3.36346 2.56376 2.60072C3.36891 1.79561 4.40712 1.39305 5.44534 1.39305C6.48356 1.39305 7.52178 1.79561 8.32692 2.60072L10.361 4.6135L12.395 2.57953C13.9841 0.990498 16.5903 0.990498 18.1582 2.57953C18.921 3.34227 19.3659 4.35925 19.3659 5.46098C19.3659 6.56271 18.9422 7.57969 18.1582 8.34243L10.361 16.1605L2.56376 8.36362C1.80099 7.57969 1.35604 6.56271 1.35604 5.48217Z" fill="black"/>
-                        </svg>
-                        </div>
-                      
-                    </div>
-                    <div class="element">
-                        <img class="element__img" src="./images//dombai.jpg" alt="Домбай">
-                        <div class="element__info"><h2 class="element__title">Домбай</h2>
-                        <svg class="element__heart" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19.154 9.33822C21.294 7.19833 21.294 3.72364 19.154 1.60492C17.014 -0.534975 13.5392 -0.534975 11.3992 1.60492L10.361 2.66428L9.32276 1.62611C7.18277 -0.534975 3.70792 -0.534975 1.58911 1.60492C0.550891 2.64309 0 4.02026 0 5.48217C0 6.94408 0.572079 8.32124 1.58911 9.35941L10.361 18.1309L19.154 9.33822ZM1.35604 5.48217C1.35604 4.38044 1.7798 3.36346 2.56376 2.60072C3.36891 1.79561 4.40712 1.39305 5.44534 1.39305C6.48356 1.39305 7.52178 1.79561 8.32692 2.60072L10.361 4.6135L12.395 2.57953C13.9841 0.990498 16.5903 0.990498 18.1582 2.57953C18.921 3.34227 19.3659 4.35925 19.3659 5.46098C19.3659 6.56271 18.9422 7.57969 18.1582 8.34243L10.361 16.1605L2.56376 8.36362C1.80099 7.57969 1.35604 6.56271 1.35604 5.48217Z" fill="black"/>
-                        </svg>
+                            <button type="button" class="element__heart"></button>
                         </div>
                     </div>
                     <div class="element">
-                        <img class="element__img" src="./images/elbrus.jpg" alt="Эльбрус">
-                        <div class="element__info"><h2 class="element__title">Гора Эльбрус</h2>
-                        <svg class="element__heart" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19.154 9.33822C21.294 7.19833 21.294 3.72364 19.154 1.60492C17.014 -0.534975 13.5392 -0.534975 11.3992 1.60492L10.361 2.66428L9.32276 1.62611C7.18277 -0.534975 3.70792 -0.534975 1.58911 1.60492C0.550891 2.64309 0 4.02026 0 5.48217C0 6.94408 0.572079 8.32124 1.58911 9.35941L10.361 18.1309L19.154 9.33822ZM1.35604 5.48217C1.35604 4.38044 1.7798 3.36346 2.56376 2.60072C3.36891 1.79561 4.40712 1.39305 5.44534 1.39305C6.48356 1.39305 7.52178 1.79561 8.32692 2.60072L10.361 4.6135L12.395 2.57953C13.9841 0.990498 16.5903 0.990498 18.1582 2.57953C18.921 3.34227 19.3659 4.35925 19.3659 5.46098C19.3659 6.56271 18.9422 7.57969 18.1582 8.34243L10.361 16.1605L2.56376 8.36362C1.80099 7.57969 1.35604 6.56271 1.35604 5.48217Z" fill="black"/>
-                        </svg>
-                        </div>
-                      
-                    </div>
-                    <div class="element">
-                        <img class="element__img" src="./images//dombai.jpg" alt="Домбай">
-                        <div class="element__info"><h2 class="element__title">Домбай</h2>
-                        <svg class="element__heart" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19.154 9.33822C21.294 7.19833 21.294 3.72364 19.154 1.60492C17.014 -0.534975 13.5392 -0.534975 11.3992 1.60492L10.361 2.66428L9.32276 1.62611C7.18277 -0.534975 3.70792 -0.534975 1.58911 1.60492C0.550891 2.64309 0 4.02026 0 5.48217C0 6.94408 0.572079 8.32124 1.58911 9.35941L10.361 18.1309L19.154 9.33822ZM1.35604 5.48217C1.35604 4.38044 1.7798 3.36346 2.56376 2.60072C3.36891 1.79561 4.40712 1.39305 5.44534 1.39305C6.48356 1.39305 7.52178 1.79561 8.32692 2.60072L10.361 4.6135L12.395 2.57953C13.9841 0.990498 16.5903 0.990498 18.1582 2.57953C18.921 3.34227 19.3659 4.35925 19.3659 5.46098C19.3659 6.56271 18.9422 7.57969 18.1582 8.34243L10.361 16.1605L2.56376 8.36362C1.80099 7.57969 1.35604 6.56271 1.35604 5.48217Z" fill="black"/>
-                        </svg>
+                        <img class="element__img" src="./images/elbrus.jpg" alt="Эльбрус" />
+                        <div class="element__info">
+                            <h2 class="element__title">Гора Эльбрус</h2>
+                            <button type="button" class="element__heart"></button>
                         </div>
                     </div>
                     <div class="element">
-                        <img class="element__img" src="./images/karachaevsk.jpg" alt="Карачаевск">
+                        <img class="element__img" src="./images//dombai.jpg" alt="Домбай" />
+                        <div class="element__info">
+                            <h2 class="element__title">Домбай</h2>
+                            <button type="button" class="element__heart"></button>
+                        </div>
+                    </div>
+                    <div class="element">
+                        <img class="element__img" src="./images/elbrus.jpg" alt="Эльбрус" />
+                        <div class="element__info">
+                            <h2 class="element__title">Гора Эльбрус</h2>
+                            <button type="button" class="element__heart"></button>
+                        </div>
+                    </div>
+                    <div class="element">
+                        <img class="element__img" src="./images//dombai.jpg" alt="Домбай" />
+                        <div class="element__info">
+                            <h2 class="element__title">Домбай</h2>
+                            <button type="button" class="element__heart"></button>
+                        </div>
+                    </div>
+                    <div class="element">
+                        <img class="element__img" src="./images/karachaevsk.jpg" alt="Карачаевск" />
                         <div class="element__info">
                             <h2 class="element__title">Карачаево-Черкессия</h2>
-                        <svg class="element__heart" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19.154 9.33822C21.294 7.19833 21.294 3.72364 19.154 1.60492C17.014 -0.534975 13.5392 -0.534975 11.3992 1.60492L10.361 2.66428L9.32276 1.62611C7.18277 -0.534975 3.70792 -0.534975 1.58911 1.60492C0.550891 2.64309 0 4.02026 0 5.48217C0 6.94408 0.572079 8.32124 1.58911 9.35941L10.361 18.1309L19.154 9.33822ZM1.35604 5.48217C1.35604 4.38044 1.7798 3.36346 2.56376 2.60072C3.36891 1.79561 4.40712 1.39305 5.44534 1.39305C6.48356 1.39305 7.52178 1.79561 8.32692 2.60072L10.361 4.6135L12.395 2.57953C13.9841 0.990498 16.5903 0.990498 18.1582 2.57953C18.921 3.34227 19.3659 4.35925 19.3659 5.46098C19.3659 6.56271 18.9422 7.57969 18.1582 8.34243L10.361 16.1605L2.56376 8.36362C1.80099 7.57969 1.35604 6.56271 1.35604 5.48217Z" fill="black"/>
-                        </svg>
+                            <button type="button" class="element__heart"></button>
                         </div>
-                      
                     </div>
-                    
                 </section>
-                
-               
             </main>
             <footer class="footer">
-               
                 <p class="footer__copyright">&copy;2020. Mesto Russia</p>
             </footer>
         </div>
         <div class="popup">
-            
             <div class="popup__container">
-                <button class="button-close" value="Закрыть"></button>
+                <button type="reset" class="popup__close-button" value="Закрыть"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form class="form" name="form">
-                    
-                    <input class="form_name" type="text" placeholder="Имя" value="Жак-Ив Кусто" required>
-                    <input class="form_profession" type="text" placeholder="Профессия" value="Исследователь океана" required>
-                
-                <button type="submit" class="button-popup" value="Сохранить">Сохранить</button>
-            </form>
+                    <input class="form__name" name="name" type="text" placeholder="Имя" value="Жак-Ив Кусто" required />
+                    <input class="form__profession" name="profession" type="text" placeholder="Профессия" value="Исследователь океана" required />
+
+                    <button type="submit" class="popup__save-button" value="Сохранить">Сохранить</button>
+                </form>
             </div>
-            
         </div>
         <script src="./javascript/index.js"></script>
     </body>
