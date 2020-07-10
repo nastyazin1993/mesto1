@@ -13,5 +13,6 @@
 .element__heart:hover{
     transform: scale(1.5);
     transition: transform ease-in-out 0.5s;
+    cursor: pointer;
 
 }
