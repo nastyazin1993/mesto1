@@ -11,8 +11,7 @@
     padding: 0;
 }
 .element__heart:hover{
-    transform: scale(1.5);
-    transition: transform ease-in-out 0.5s;
+    opacity: 0.6;
     cursor: pointer;
-
+    transition: 0.5s 0s opacity ease-in-out;
 }

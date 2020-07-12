@@ -7,7 +7,9 @@
     height: 50px;
     background-color: #000000;
     border: 0;
-    border: 1px solid #ffffff;
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 2px;
     
 }
 .profile__add-button:hover{
