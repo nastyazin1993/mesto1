@@ -42,6 +42,15 @@ const closeEditButton = popupEditProfile.querySelector(".popup__close-button_edi
 const nameText = document.querySelector(".profile__title");
 const professionText = document.querySelector(".profile__subtitle");
 
+function togglePopup(modal) {
+ if (!modal.classList.contains('popup_open')){
+  inputName.value = nameText.innerText;
+  inputAboutName.value = professionText.innerText;
+ }
+ modal.classList.toggle('popup_open');
+}
+
+
 function createCard(data) {
   const cardElement = cardsTemplate.cloneNode(true);
   const cardImg = cardElement.querySelector(".element__img");
@@ -82,44 +91,38 @@ initialCards.forEach((data) => {
   renderCard(data);
 });
 
-function openEditPopup() {
-  popupEditProfile.classList.add("popup_open");
-  inputName.value = nameText.innerText;
-  inputAboutName.value = professionText.innerText;
-}
+
 
 function saveEditPopup(event) {
   event.preventDefault();
   nameText.textContent = inputName.value;
   professionText.textContent = inputAboutName.value;
-  closeEditPopup();
+  togglePopup(popupEditProfile);
 }
 
-function closeEditPopup() {
-  popupEditProfile.classList.remove("popup_open");
-}
-
-function openAddPopup() {
-  popupAddCard.classList.add("popup_open");
-}
 function clearValue() {
   inputPlaceName.value = "";
   inputPlaceUrl.value = "";
 }
-function closeAddPopup() {
-  popupAddCard.classList.remove("popup_open");
-  clearValue();
-}
+
 function saveAddPopup(event) {
   event.preventDefault();
   renderCard({ name: inputPlaceName.value, link: inputPlaceUrl.value });
   clearValue();
-  closeAddPopup();
+  togglePopup(popupAddCard);
 }
 
-openEditButton.addEventListener("click", openEditPopup);
-closeEditButton.addEventListener("click", closeEditPopup);
+openEditButton.addEventListener("click", () =>{
+  togglePopup(popupEditProfile)
+});
+closeEditButton.addEventListener("click", () =>{
+  togglePopup(popupEditProfile)
+});
 formEdit.addEventListener("submit", saveEditPopup);
-openAddButton.addEventListener("click", openAddPopup);
+openAddButton.addEventListener("click", () =>{
+  togglePopup(popupAddCard)
+});
 formAdd.addEventListener("submit", saveAddPopup);
-closeAddButton.addEventListener("click", closeAddPopup);
+closeAddButton.addEventListener("click", () =>{
+  togglePopup(popupAddCard)
+});
