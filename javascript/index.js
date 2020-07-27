@@ -44,8 +44,7 @@ const professionText = document.querySelector(".profile__subtitle");
 
 function togglePopup(modal) {
  if (!modal.classList.contains('popup_open')){
-  inputName.value = nameText.innerText;
-  inputAboutName.value = professionText.innerText;
+ 
  }
  modal.classList.toggle('popup_open');
 }
@@ -114,7 +113,10 @@ function saveAddPopup(event) {
 
 openEditButton.addEventListener("click", () =>{
   togglePopup(popupEditProfile)
-});
+  inputName.value = nameText.innerText;
+  inputAboutName.value = professionText.innerText;
+}
+);
 closeEditButton.addEventListener("click", () =>{
   togglePopup(popupEditProfile)
 });
