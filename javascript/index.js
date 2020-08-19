@@ -1,7 +1,10 @@
+import Card from './card.js';
+import initialCards from './initial-cards.js';
+import FormValidation from './FormValidation.js';
+import {togglePopup, closeOnOverlay, keyEscapeHandler} from './utils.js';
+
+
 const cards = document.querySelector(".elements");
-const cardsTemplate = document
-  .querySelector(".cards")
-  .content.querySelector(".element");
 const openEditButton = document.querySelector(".profile__edit-button");
 const openAddButton = document.querySelector(".profile__add-button");
 const popupAddCard = document.querySelector(".popup_add-card");
@@ -24,68 +27,26 @@ const editFormButton = popupEditProfile.querySelector(
   ".form__save-button_action"
 );
 const addFormButton = popupAddCard.querySelector(".form__save-button_action");
+const config = {
+  formSelector: ".form",
+  inputSelector: ".form__input",
+  buttonSubmitSelector: ".form__save-button",
+  disabledButtonClass: "form__save-button_disabled",
+  inputErrorClass: "form__input_type_error",
+  errorClass: "form__input-error_active",
+};
 
-function togglePopup(modal) {
-  modal.classList.toggle("popup_open");
-  if (modal.classList.contains("popup_open")) {
-    document.addEventListener("keydown", keyEscapeHandler);
-    document.addEventListener("click", closeOnOverlay);
-  } else {
-    document.removeEventListener("keydown", keyEscapeHandler);
-    document.removeEventListener("click", closeOnOverlay);
-  }
-}
+const editFormValidator = new FormValidation(config, formEdit)
+const addCardFormValidator = new FormValidation(config, formAdd)
 
-function closeOnOverlay(evt) {
-  const openedModal = document.querySelector(".popup_open");
-  if (evt.target === openedModal) {
-    togglePopup(openedModal);
-  }
-}
+editFormValidator.enableValidation();
+addCardFormValidator.enableValidation()
 
-function keyEscapeHandler(evt) {
-  if (evt.key === "Escape") {
-    const openedModal = document.querySelector(".popup_open");
-    togglePopup(openedModal);
-  }
-}
-
-function createCard(data) {
-  const cardElement = cardsTemplate.cloneNode(true);
-  const cardImg = cardElement.querySelector(".element__img");
-  const cardTitle = cardElement.querySelector(".element__title");
-  const cardHeartButton = cardElement.querySelector(".element__heart");
-  const cardDeleteButton = cardElement.querySelector(".element__delete");
-  const openImg = document.querySelector(".popup_open-image");
-  const placeImage = document.querySelector(".popup__img");
-  const titleImage = document.querySelector(".popup__title_open-image");
-  const closeOpenImgButton = openImg.querySelector(
-    ".popup__close-button_open-image"
-  );
-  cardTitle.textContent = data.name;
-  cardImg.src = data.link;
-  cardImg.alt = data.name;
-
-  cardHeartButton.addEventListener("click", function () {
-    cardHeartButton.classList.toggle("element__heart_active");
-  });
-  cardDeleteButton.addEventListener("click", function () {
-    cardElement.remove();
-  });
-  cardImg.addEventListener("click", function () {
-    togglePopup(openImg);
-    placeImage.src = cardImg.src;
-    placeImage.alt = cardImg.alt;
-    titleImage.textContent = placeImage.alt;
-    closeOpenImgButton.addEventListener("click", function () {
-      openImg.classList.remove("popup_open");
-    });
-  });
-  return cardElement;
-}
 
 function renderCard(data) {
-  cards.prepend(createCard(data));
+  const card = new Card(data);
+  const cardElement = card.generateCard();
+  cards.prepend(cardElement);
 }
 
 initialCards.forEach((data) => {
@@ -115,7 +76,8 @@ openEditButton.addEventListener("click", () => {
   togglePopup(popupEditProfile);
   inputName.value = nameText.innerText;
   inputAboutName.value = professionText.innerText;
-  resetForm(popupEditProfile, editFormButton);
+  editFormValidator.resetForm(editFormButton);
+ 
 });
 
 closeEditButton.addEventListener("click", () => {
@@ -127,7 +89,8 @@ formEdit.addEventListener("submit", saveEditPopup);
 openAddButton.addEventListener("click", () => {
   togglePopup(popupAddCard);
   clearValue();
-  resetForm(popupAddCard, addFormButton);
+  addCardFormValidator.resetForm(addFormButton);
+
 });
 
 formAdd.addEventListener("submit", saveAddPopup);
