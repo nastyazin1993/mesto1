@@ -53,7 +53,7 @@ export default  class FormValidation {
   
   _isValid(inputElement) {
     if (!inputElement.validity.valid) {
-      this._showInputError(inputElement.validity.valid);
+      this._showInputError(inputElement);
     } else {
       this._hideInputError(inputElement);
     }
@@ -70,6 +70,7 @@ export default  class FormValidation {
     inputElement.classList.add(this._config.inputErrorClass);
     errorElement.classList.add(this._config.errorClass);
     errorElement.textContent = inputElement.validationMessage;
+    console.log(errorElement)
   };
   
 }

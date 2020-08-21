@@ -1,19 +1,26 @@
 import {togglePopup, closeOnOverlay, keyEscapeHandler} from './utils.js';
+import {cards, cardsTemplate, openEditButton, openAddButton, popupAddCard, formAdd, 
+  inputPlaceName, inputPlaceUrl, closeAddButton, popupEditProfile, formEdit, inputName, inputAboutName, closeEditButton, nameText,
+  professionText, editFormButton, addFormButton, openImg, placeImage, titleImage, closeOpenImgButton, config} from './constants.js';
 
-export default 
+  export default 
 class Card {
-  constructor(data) {
+  
+ 
+  constructor(data, cardsTemplate) {
+    
     this._name = data.name;
     this._link = data.link;
-    
+    this._cardsTemplate = cardsTemplate;
   }
-
+  
   _getTemplate() {
     const cardElement = document
-      .querySelector('.cards')
-      .content.querySelector(".element")
+      .querySelector(this._cardsTemplate)
+      .content
+      .querySelector(".element")
       .cloneNode(true);
-
+    
     return cardElement;
   }
 
@@ -23,20 +30,13 @@ class Card {
     const cardImg = this._element.querySelector(".element__img");
     cardImg.src = this._link;
     cardImg.alt = this._name;
-    const openImg = document.querySelector(".popup_open-image");
-    const placeImage = document.querySelector(".popup__img");
-    const titleImage = document.querySelector(".popup__title_open-image");
-    const closeOpenImgButton = openImg.querySelector(
-      ".popup__close-button_open-image"
-    );
+    
     cardImg.addEventListener("click", () => {
       togglePopup(openImg);
       placeImage.src = cardImg.src;
       placeImage.alt = cardImg.alt;
       titleImage.textContent = placeImage.alt;
-      closeOpenImgButton.addEventListener("click", function () {
-        openImg.classList.remove("popup_open");
-      });
+      
     });
 
     const cardTitle = this._element.querySelector(".element__title");
