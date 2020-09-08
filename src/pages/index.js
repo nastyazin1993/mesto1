@@ -1,5 +1,5 @@
-import Section from "../components/section.js";
-import Card from "../components/card.js";
+import Section from "../components/Section.js";
+import Card from "../components/Card.js";
 import initialCards from "../utils/initial-cards.js";
 import FormValidation from "../components/FormValidation.js";
 import './index.css';
@@ -9,6 +9,7 @@ import {
   openAddButton,
   popupAddCard,
   formAdd,
+  cardDefault,
   popupEditProfile,
   formEdit,
   inputName,
@@ -26,19 +27,19 @@ import UserInfo from "../components/UserInfo.js";
 
 const editFormValidator = new FormValidation(config, formEdit);
 const addCardFormValidator = new FormValidation(config, formAdd);
-const classUserInfo = new UserInfo({ nameText, professionText });
+const userInfo = new UserInfo({ nameText, professionText });
+const imagePopup = new PopupWithImage(openImg);
 
 function renderCard(item) {
   const card = new Card(
     {
       data: item,
       handleCardClick: () => {
-        const classPopupPhoto = new PopupWithImage(openImg);
-        classPopupPhoto.openPopup(item.link, item.name);
-        classPopupPhoto.setEventListeners();
+        imagePopup.openPopup(item.link, item.name);
+        imagePopup.setEventListeners();
       },
     },
-    ".card-template_type_default"
+    cardDefault
   );
   const cardElement = card.generateCard();
   cards.prepend(cardElement);
@@ -55,35 +56,35 @@ const cardsList = new Section(
 );
 cardsList.renderItems();
 
-const PopupAddForm = new PopupWithForm({
+const popupAddForm = new PopupWithForm({
   popupSelector: popupAddCard,
   formCallback: (formData) => {
     renderCard(formData);
   },
 });
 
-const PopupEditForm = new PopupWithForm({
+const popupEditForm = new PopupWithForm({
   popupSelector: popupEditProfile,
   formCallback: (formData) => {
-    classUserInfo.setUserInfo(formData);
+    userInfo.setUserInfo(formData);
   },
 });
 
 openEditButton.addEventListener("click", () => {
-  PopupEditForm.openPopup();
-  const InputValue = classUserInfo.getUserInfo();
-  inputName.value = InputValue.nam;
-  inputAboutName.value = InputValue.profession;
+  popupEditForm.openPopup();
+  const inputValue = userInfo.getUserInfo();
+  inputName.value = inputValue.name;
+  inputAboutName.value = inputValue.profession;
 
   editFormValidator.resetForm(editFormButton);
 });
 
 openAddButton.addEventListener("click", () => {
-  PopupAddForm.openPopup();
+  popupAddForm.openPopup();
   addCardFormValidator.resetForm(addFormButton);
 });
-PopupAddForm.setEventListeners();
-PopupEditForm.setEventListeners();
+popupAddForm.setEventListeners();
+popupEditForm.setEventListeners();
 
 editFormValidator.enableValidation();
 addCardFormValidator.enableValidation();

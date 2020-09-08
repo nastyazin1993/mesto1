@@ -12,7 +12,7 @@ export default class Popup {
         this.closePopup();
       }
     };
-    this._closeButton = document.querySelectorAll(".popup__close-button");
+    this._closeButton = this._popup.querySelector(".popup__close-button");
   }
 
   openPopup() {
@@ -27,10 +27,9 @@ export default class Popup {
     document.removeEventListener("click", this._closeOnOverlay);
   }
   setEventListeners() {
-    this._closeButton.forEach((buttonClose) => {
-      buttonClose.addEventListener("click", () => {
+    this._closeButton.addEventListener("click", () => {
         this.closePopup();
       });
-    });
+    
   }
 }
