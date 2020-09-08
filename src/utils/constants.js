@@ -13,7 +13,7 @@ const closeAddButton = popupAddCard.querySelector(
 );
 const popupEditProfile = document.querySelector(".popup_edit-profile");
 const formEdit = document.forms.formEditProfile;
-const inputName = formEdit.elements.name;
+const inputName = formEdit.elements.nam;
 const inputAboutName = formEdit.elements.profession;
 const closeEditButton = popupEditProfile.querySelector(
   ".popup__close-button_edit-profile"

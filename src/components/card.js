@@ -1,26 +1,16 @@
-import {togglePopup, closeOnOverlay, keyEscapeHandler} from './utils.js';
-import {cards, cardsTemplate, openEditButton, openAddButton, popupAddCard, formAdd, 
-  inputPlaceName, inputPlaceUrl, closeAddButton, popupEditProfile, formEdit, inputName, inputAboutName, closeEditButton, nameText,
-  professionText, editFormButton, addFormButton, openImg, placeImage, titleImage, closeOpenImgButton, config} from './constants.js';
-
-  export default 
-class Card {
-  
- 
-  constructor(data, cardsTemplate) {
-    
+export default class Card {
+  constructor({ data, handleCardClick }, cardsTemplate) {
     this._name = data.name;
     this._link = data.link;
+    this._handleCardClick = handleCardClick;
     this._cardsTemplate = cardsTemplate;
   }
-  
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardsTemplate)
-      .content
-      .querySelector(".element")
+      .content.querySelector(".element")
       .cloneNode(true);
-    
+
     return cardElement;
   }
 
@@ -30,13 +20,8 @@ class Card {
     const cardImg = this._element.querySelector(".element__img");
     cardImg.src = this._link;
     cardImg.alt = this._name;
-    
     cardImg.addEventListener("click", () => {
-      togglePopup(openImg);
-      placeImage.src = cardImg.src;
-      placeImage.alt = cardImg.alt;
-      titleImage.textContent = placeImage.alt;
-      
+      this._handleCardClick();
     });
 
     const cardTitle = this._element.querySelector(".element__title");
@@ -55,7 +40,3 @@ class Card {
     return this._element;
   }
 }
-
-
-
-
