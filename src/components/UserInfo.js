@@ -5,13 +5,13 @@ export default class UserInfo {
   }
   getUserInfo() {
     const authorInfo = {
-      name: this._nameText.innerText,
+      names: this._nameText.innerText,
       profession: this._professionText.innerText,
     };
     return authorInfo;
   }
-  setUserInfo({ name, profession }) {
-    this._nameText.textContent = name;
+  setUserInfo({ names, profession }) {
+    this._nameText.textContent = names;
     this._professionText.textContent = profession;
   }
 }

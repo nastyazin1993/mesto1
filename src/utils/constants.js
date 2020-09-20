@@ -6,7 +6,7 @@ const openEditButton = document.querySelector(".profile__edit-button");
 const openAddButton = document.querySelector(".profile__add-button");
 const popupAddCard = document.querySelector(".popup_add-card");
 const formAdd = document.forms.formAddCard;
-const inputPlaceName = formAdd.elements.place;
+const inputPlaceName = formAdd.elements.name;
 const inputPlaceUrl = formAdd.elements.link;
 const closeAddButton = popupAddCard.querySelector(
   ".popup__close-button_add-card"
@@ -14,13 +14,14 @@ const closeAddButton = popupAddCard.querySelector(
 const cardDefault = document.querySelector(".card-template_type_default");
 const popupEditProfile = document.querySelector(".popup_edit-profile");
 const formEdit = document.forms.formEditProfile;
-const inputName = formEdit.elements.name;
+const inputName = formEdit.elements.names;
 const inputAboutName = formEdit.elements.profession;
 const closeEditButton = popupEditProfile.querySelector(
   ".popup__close-button_edit-profile"
 );
 const nameText = document.querySelector(".profile__title");
 const professionText = document.querySelector(".profile__subtitle");
+
 const editFormButton = popupEditProfile.querySelector(
   ".form__save-button_action"
 );
@@ -32,6 +33,17 @@ const titleImage = document.querySelector(".popup__title_open-image");
 const closeOpenImgButton = openImg.querySelector(
   ".popup__close-button_open-image"
 );
+
+const popupEditAvatar = document.querySelector(".popup_edit-avatar");
+const popupDeleteCard = document.querySelector(".popup_delete-card");
+const profileAvatar = document.querySelector(".profile__avatar");
+const profileAvatarIcon = document.querySelector(".profile__avatar-icon");
+const formEditAvatar = document.forms.formEditAvatar;
+const inputEditAvatar = formEditAvatar.elements.avatar;
+const editAvatarButton = formEditAvatar.querySelector(".form__save-button_action");
+
+
+
 const config = {
   formSelector: ".form",
   inputSelector: ".form__input",
@@ -43,4 +55,5 @@ const config = {
 
 export {cards, cardsTemplate, openEditButton, openAddButton, popupAddCard, formAdd, cardDefault,
     inputPlaceName, inputPlaceUrl, closeAddButton, popupEditProfile, formEdit, inputName, inputAboutName, closeEditButton, nameText,
-    professionText, editFormButton, addFormButton, openImg, placeImage, titleImage, closeOpenImgButton, config}
+    professionText, editFormButton, addFormButton, openImg, placeImage, titleImage, closeOpenImgButton, popupEditAvatar, popupDeleteCard, profileAvatar, 
+    formEditAvatar, inputEditAvatar,editAvatarButton, profileAvatarIcon, config}

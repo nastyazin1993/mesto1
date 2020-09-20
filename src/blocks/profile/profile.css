@@ -6,6 +6,9 @@
 @import url(./__subtitle/profile__subtitle.css);
 @import url(./__edit-button/profile__edit-button.css);
 @import url(./__add-button/profile__add-button.css);
+@import url(./__avatar-overlay/profile__avatar-overlay.css);
+@import url(./__avatar-conteiner/profile__avatar-conteiner.css);
+@import url(./__avatar-icon/profile__avatar-icon.css);
 
 .profile {
     margin-top: 40px;

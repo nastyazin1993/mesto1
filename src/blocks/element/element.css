@@ -3,6 +3,7 @@
 @import url(./__img/element__img.css);
 @import url(./__heart/element__heart.css);
 @import url(./__delete/element__delete.css);
+@import url(./__sumLike/element__sumLike.css);
 .element {
     width: 282px;
     background-color: #ffffff;
