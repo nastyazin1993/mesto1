@@ -1,6 +1,6 @@
 export default class Card {
   constructor(
-    { data, likes, api, idUser, myId, handleCardClick, handleDeleteIconClick },
+    { data, api, idUser, myId, handleCardClick, handleDeleteIconClick },
     cardsTemplate
   ) {
     this._name = data.name;
@@ -10,7 +10,7 @@ export default class Card {
     this._handleCardClick = handleCardClick;
     this._handleDeleteIconClick = handleDeleteIconClick;
     this._cardsTemplate = cardsTemplate;
-    this._like = likes;
+    this._like = data.likes;
     this._idUser = idUser;
     this._api = api;
   }
@@ -36,9 +36,7 @@ export default class Card {
 
     cardDeleteButton.addEventListener("click", () => {
       this._handleDeleteIconClick(this._id, this._element, this._api);
-      console.log(this._id);
-      console.log(this._element);
-      console.log(this._api);
+      
     });
   }
 
@@ -74,19 +72,22 @@ export default class Card {
   }
   _handleLikeClick(evt) {
     if (!evt.target.classList.contains("element__heart_active")) {
-      this._api.PutLike(`${this._id}`).then((data) => {
+      this._api.putLike(`${this._id}`).then((data) => {
         this._toggleLike(data);
-      });
+        
+      })
+      .catch((err) => console.log(err));
     } else {
-      this._api.DeleteLike(`${this._id}`).then((data) => {
+      this._api.deleteLike(`${this._id}`).then((data) => {
         this._toggleLike(data);
-      });
+      })
+      .catch((err) => console.log(err));
     }
   }
-  _toggleLike() {
+  _toggleLike(data) {
     this._element.querySelector(
       ".element__sumLike"
-    ).textContent = this._like.length;
+    ).textContent = data.likes.length;
     this._element
       .querySelector(".element__heart")
       .classList.toggle("element__heart_active");

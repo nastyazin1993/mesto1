@@ -11,27 +11,26 @@ export default class ConfirmPopup extends Popup {
     this._formPopup.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._removeElement();
+    
+      
     });
   }
-  open(cardId, item, api) {
+  openPopup(cardId, item, api) {
     this._cardId = cardId;
     this._elements = item;
     this._api = api
-    console.log(this._cardId)
     super.openPopup();
   }
   _removeElement() {
-    this._renderLoading(this._confirmFormButton, true, 'Удаление...');
     this._api
       .deleteCard(`${this._cardId}`)
-      .then(() => this._elements.remove())
-      .finally(() => {
-        this.closePopup();
-      })
+      .then(() => 
+      this._elements.remove(),
+      this.closePopup())
       .catch((err) => console.log(err))
       .finally(() => {
-        this._renderLoading(this._confirmFormButton, false, 'Да');
+        this._renderLoading(this._confirmFormButton, false, 'Да'); 
       });
-    this.closePopup();
+    
   }
 }

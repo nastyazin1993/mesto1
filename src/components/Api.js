@@ -1,10 +1,3 @@
-import {
-  inputName,
-  inputAboutName,
-  inputEditAvatar,
-  inputPlaceName,
-  inputPlaceUrl,
-} from "../utils/constants.js";
 
 export default class Api {
   constructor(config) {
@@ -12,123 +5,85 @@ export default class Api {
     this._headers = config.headers;
   }
 
+  _getResponseData(res){
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(new Error(`Ошибка: ${res.status} ....`));
+  }
+
   getUserInfo() {
     return fetch(`${this._url}users/me`, {
       method: "GET",
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status} - ${res.statusText}`);
-    });
+    }).then(res => this._getResponseData(res));
   }
+
   getInitialCards() {
     return fetch(`${this._url}cards`, {
       method: "GET",
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status} - ${res.statusText}`);
-    });
+    }).then(res => this._getResponseData(res));
   }
 
   deleteCard(url) {
     return fetch(`${this._url}cards/` + url, {
       method: "DELETE",
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status} - ${res.statusText}`);
-    });
+    }).then(res => this._getResponseData(res));
   }
-  patchUserInfo() {
+
+  patchUserInfo({name, about}) {
     return fetch(`${this._url}users/me`, {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({
-        name: `${inputName.value}`,
-        about: `${inputAboutName.value}`,
-      }),
-      /*.then((res) => {
-                if (res.ok){
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status} - ${res.statusText}`);
-            })*/
-    });
+      body: JSON.stringify({name, about}
+      
+      ),
+    }).then(res => this._getResponseData(res));
   }
-  postCard() {
+
+  postCard({ name, link }) {
     return fetch(`${this._url}cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
-        name: `${inputPlaceName.value}`,
-        link: `${inputPlaceUrl.value}`,
+        name,
+        link
       }),
-      /*.then((res) => {
-                if (res.ok){
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status} - ${res.statusText}`);
-            })*/
-    });
+    }).then(res => this._getResponseData(res));
   }
+
   getSumLikes() {
     return fetch(`${this._url}cards`, {
       method: "GET",
-      headers: this._headers.then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status} - ${res.statusText}`);
-      }),
-    });
+      headers: this._headers
+    }).then(res => this._getResponseData(res));
   }
-  DeleteLike(url) {
-    return fetch(`${this._url}cards/likes/` + url, {
-      method: "DELETE",
-      headers: this._headers,
 
-      /*.then((res) => {
-                if (res.ok){
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status} - ${res.statusText}`);
-            })*/
-    });
+  deleteLike(id) {
+    return fetch(`${this._url}cards/likes/` + id, {
+      method: "DELETE",
+      headers: this._headers
+      
+    }).then(res => this._getResponseData(res));
   }
-  PutLike(url) {
+
+  putLike(url) {
     return fetch(`${this._url}cards/likes/` + url, {
       method: "PUT",
-      headers: this._headers,
-
-      /*.then((res) => {
-                if (res.ok){
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status} - ${res.statusText}`);
-            })*/
-    });
+      headers: this._headers
+    }).then(res => this._getResponseData(res));
   }
-  patchUserAvatar() {
-    
+
+  patchUserAvatar({avatar}) {
     return fetch(`${this._url}users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: `${inputEditAvatar.value}`,
-      }),
-      /* .then((res) => {
-                if (res.ok){
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status} - ${res.statusText}`);
-            })*/
-    });
+        avatar,
+      })
+    }).then(res => this._getResponseData(res));
   }
+
 }

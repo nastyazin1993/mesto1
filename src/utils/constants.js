@@ -6,7 +6,7 @@ const openEditButton = document.querySelector(".profile__edit-button");
 const openAddButton = document.querySelector(".profile__add-button");
 const popupAddCard = document.querySelector(".popup_add-card");
 const formAdd = document.forms.formAddCard;
-const inputPlaceName = formAdd.elements.name;
+const inputPlaceName = formAdd.elements.place;
 const inputPlaceUrl = formAdd.elements.link;
 const closeAddButton = popupAddCard.querySelector(
   ".popup__close-button_add-card"
@@ -14,8 +14,8 @@ const closeAddButton = popupAddCard.querySelector(
 const cardDefault = document.querySelector(".card-template_type_default");
 const popupEditProfile = document.querySelector(".popup_edit-profile");
 const formEdit = document.forms.formEditProfile;
-const inputName = formEdit.elements.names;
-const inputAboutName = formEdit.elements.profession;
+const inputName = formEdit.elements.name;
+const inputAboutName = formEdit.elements.about;
 const closeEditButton = popupEditProfile.querySelector(
   ".popup__close-button_edit-profile"
 );
