@@ -53,13 +53,10 @@ const api = new Api({
   },
 });
 
-
-
 api.getUserInfo()
   .then((res) => {
-    nameText.textContent = res.name;
-    professionText.textContent = res.about;
-    profileAvatar.src = res.avatar;
+    userInfo.setUserInfo(res)
+    userInfo.setUserAvatar(res.avatar)
     return res._id;
   }).then((id)=>{
     api.getInitialCards()
@@ -87,12 +84,10 @@ api.getUserInfo()
         api: api,
         idUser: item.owner._id,
         cardId: item._id,
-
         handleCardClick: () => {
           imagePopup.openPopup(item.link, item.name);
           imagePopup.setEventListeners();
         },
-
         handleDeleteIconClick: (cardId, item, api, myId, idUser) => {
           classConfirmForm.openPopup(cardId, item, api, myId, idUser);
           classConfirmForm.setEventListeners();
@@ -104,19 +99,19 @@ api.getUserInfo()
   }
   const popupAddForm = new PopupWithForm({
     popupSelector: popupAddCard,
-
     formCallback: (formData) => {
       renderLoading(addFormButton, true, "Создание...");
-      api.postCard(formData).then((data) => {
+      api.postCard(formData)
+      .then((data) => {
         generateCard(data, data.owner._id);
-        
         cardsList.addItem(generateCard(data, data.owner._id).generateCard())
-      }).catch((err) => console.log(err))
+        popupAddForm.closePopup()
+      })
+      .catch((err) => console.log(err))
       .finally(()=>{
          renderLoading(addFormButton, false, 'Создать');
-         popupAddForm.closePopup();
        })
-       popupAddForm.closePopup()
+       
     }
   })
     openAddButton.addEventListener("click", () => {
@@ -133,17 +128,15 @@ const popupEditAvatarForm = new PopupWithForm({
   popupSelector: popupEditAvatar,
   formCallback: (formData) => {
     renderLoading(editAvatarButton, true, "Сохранение...");
-    api.patchUserAvatar(formData).then((formData) => {
+    api.patchUserAvatar(formData)
+    .then((formData) => {
       userInfo.setUserAvatar(formData.avatar);
       popupEditAvatarForm.closePopup()
     })
     .catch((err) => console.log(err))
     .finally(() => {
       renderLoading(editAvatarButton, false, 'Сохранить');
-      popupEditAvatarForm.closePopup()
     });
-   
-
   },
 });
 
@@ -161,7 +154,6 @@ const popupEditForm = new PopupWithForm({
     .catch((err) => console.log(err))
     .finally(() => {
       renderLoading(editFormButton, false, 'Сохранить');
-      popupEditForm.closePopup()
     });
     
   },
